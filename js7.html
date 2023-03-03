@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>js7</title>
+</head>
+<body>
+    <h1>after pop opration</h1>
+    <p id="p1"></p>
+    <h1>after push opration</h1>
+    <p id="p2"></p>
+    <h1>after shift opration</h1>
+    <p id="p3"></p>
+    <h1>after delete opration</h1>
+    <p id="p4"></p>
+    <h1>after slice opration</h1>
+    <p id="p5"></p>
+    
+    <script>
+        var array=["item1","item2","item3","item4"];
+            array.pop()
+            document.getElementById("p1").innerHTML=array;
+            array.push("item5","item6")
+            document.getElementById("p2").innerHTML=array;
+            document.getElementById("p3").innerHTML=array.shift();
+            delete array[4]
+            document.getElementById("p4").innerHTML=array;
+            array.unshift("item1")
+            document.getElementById("p5").innerHTML=array;
+    </script>
+</body>
+</html>
