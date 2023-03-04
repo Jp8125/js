@@ -9,14 +9,14 @@
 </head>
 <body>
     <div class="container">
-        <h1 id="dt"></h1>
-        <button onclick="d()">show date</button>
+        <h1 id="dt" class="text-center"></h1>
+        <div class="d-flex justify-content-center"><button onclick="d()">show date</button></div>
     </div>
    
     <script>
         function d() {
-            const day1=Date();
-        document.getElementById("dt").innerHTML=day1;
+            const day=Date();
+        document.getElementById("dt").innerHTML=day;
         }
         
     </script>
