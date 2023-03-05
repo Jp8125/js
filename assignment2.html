@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>date-validation</title>
+</head>
+
+<body>
+    <label for="date">enter the date</label>
+    <input type="text" id="date">
+    <button onclick="validate()">click</button>
+    <h1>the date is</h1>
+    <h4 id="show"></h4>
+    <script>
+        function validate() {
+            var dt = document.getElementById("date").value;
+
+            const date = dt.split("-")
+            const mo1 = [1, 3, 5, 7, 8, 10, 12]
+            const mo2 = [4, 6, 9, 11]
+
+
+
+            if (dt.length < 1) {
+                alert("enter whole date")
+            }
+            else {
+                        m = parseInt(date[0])
+                        d = parseInt(date[1])
+                        y = parseInt(date[2])
+
+                if (isNaN(m) && isNaN(d) && isNaN(y)) {
+                    alert("date should be numaric formate")
+                }
+                else {
+                    if (date[0].length > 2 || date[1].length > 2 || date[2].length > 4 || date[0]>12) {
+                        alert("enter date in mm-dd-yy format")
+                    }
+                    else {
+                      
+                        if (y % 4 == 0) {
+                            if (m == 2 && d > 29) {
+                                alert("the date should be in 0-29")
+                            }
+                            else
+                            {
+                                document.getElementById("show").innerHTML=m+"/"+d+"/"+y
+                            }
+
+                        }
+                        else {
+                            if (m == 2 && d > 28) {
+                                alert("the date should be in 0-28")
+                            }
+                            else
+                            {
+                                document.getElementById("show").innerHTML=m+"/"+d+"/"+y
+                            }
+                        }
+                    }
+                        for (value of mo1) {
+                            if (m == value && d > 31) {
+                                alert("the date should be in 0-31")
+                            }
+                            else
+                            {
+                                document.getElementById("show").innerHTML=m+"/"+d+"/"+y
+                            }
+                        }
+                        for (value of mo2) {
+                            if (m == value && d > 30) {
+                                alert("the date should be in 0-30")
+                            }
+                            else
+                            {
+                                document.getElementById("show").innerHTML=m+"/"+d+"/"+y
+                            }
+                        }
+                 
+
+                }
+
+
+            }
+        }
+    </script>
+</body>
+
+</html>
