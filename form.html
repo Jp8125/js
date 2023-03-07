@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>data</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+</head>
+
+<body>
+   
+    <div class="container p-5  border">
+
+        <form name="employee" class="form-group d-flex flex-column mx-auto w-50">
+            <label for="e_id">EmployeeID</label>
+            <input type="text" id="e_id">
+            <small id="er1" class="text-danger d-none">the emp id should longer then 5 characters</small>
+            <label for="name">Name:&nbsp;</label>
+            <input type="text" id="name" class="form-control">
+            <small id="er4" class="text-danger d-none">this field is mendatory</small>
+            <label for="age">age:</label>
+            <input type="text" id="age" class="form-control">
+            <small id="er3" class="text-danger d-none">age should between 20-49</small>
+            <div class="form-checkbox">
+                <label for="Gender">Gender:</label>
+                <input type="radio" class="form-check-input" id="female" name="Gender">
+                <label for="female">FEMALE</label>
+                <input type="radio" id="male" name="Gender" class="form-check-input">
+                <label for="male">MALE</label>
+            </div>
+            <small id="er2" class="text-danger d-none">select a Gender</small>
+
+            <label for="designation">Designation</label><input type="text" id="des">
+            <small id="er6" class="text-danger d-none">enter designation</small>
+
+            <label for="salary">Salary</label><input type="text" id="sal">
+            <small id="er7" class="text-danger d-none">enter salary</small>
+
+            <label for="email">Email:</label><input type="email" id="email" class="form-control">
+            <small id="er5" class="text-danger d-none">enter vaild email</small>
+
+            <label for="doj">Date of Joining:</label><input type="date" id="doj" class="form-control">
+            <small id="er8" class="text-danger d-none">select a date</small>
+
+            <label for="contect">Contect No:</label><input type="tel" name="contect num" id="number">
+            <small id="er9" class="text-danger d-none">enter contect number</small>
+
+            <label for="loc">Location:</label>
+            <select id="loc" class="form-control">
+                <option>Ahmedabad</option>
+                <option>Ghandhinagar</option>
+                <option>California</option>
+            </select>
+            <input type="button" value="submit" onclick="validate()" class="btn btn-primary mt-1">
+
+        </form>
+
+        <table id="dy" aria-label="show table" class="table table-stripped">
+
+        </table>
+    </div>
+
+    <script>
+             var array = []
+        function validate() {
+            var gender
+            var name = document.getElementById("name").value;
+            var id = document.getElementById("e_id").value;
+            var age = document.getElementById("age").value;
+            var male = document.getElementById("male").checked;
+            var female = document.getElementById("female").checked;
+            var email = document.getElementById("email").value;
+            var doj = document.getElementById("doj").value;
+            var des=document.getElementById("des").value;
+            var s=document.getElementById("sal").value;
+            var dt=document.getElementById("doj").value;
+            var num=document.getElementById("number").value;
+            let pt1=/^[2-4]+[0-9]/gm
+             let pt2=/^[a-zA-Z0-9+.]+@[a-zA-Z0-9.-]+$/gm
+             let pt3=/\d{10}/g
+            if(id.length<5)
+            {
+               
+                document.getElementById("er1").classList.remove("d-none");
+            }
+            else
+            {
+                document.getElementById("er1").classList.add("d-none");
+            }
+
+          
+            if (male == false && female == false) {
+                document.getElementById("er2").classList.remove("d-none");
+            }
+            else {
+                document.getElementById("er2").classList.add("d-none");
+                if (male == true) {
+                    gender = "male";
+                }
+                else {
+                    gender = "female";
+                }
+            }
+            if(!age.match(pt1))
+            {
+                document.getElementById("er3").classList.remove("d-none");
+            }
+            else
+            {
+            document.getElementById("er3").classList.add("d-none");
+            }
+            if(name.length<=0)
+            {
+               
+                document.getElementById("er4").classList.remove("d-none");
+            }
+            else
+            {
+                document.getElementById("er4").classList.add("d-none");
+            }
+            if(!email.match(pt2))
+            {
+                document.getElementById("er5").classList.remove("d-none");
+            }
+            else
+            {
+            document.getElementById("er5").classList.add("d-none");
+            }
+            if(des.length<=0)
+            {
+               
+                document.getElementById("er6").classList.remove("d-none");
+            }
+            else
+            {
+                document.getElementById("er6").classList.add("d-none");
+            }
+            if(s.length<=0)
+            {
+               
+                document.getElementById("er7").classList.remove("d-none");
+            }
+            else
+            {
+                document.getElementById("er7").classList.add("d-none");
+            }
+            if(dt.length<=0)
+            {
+               
+                document.getElementById("er8").classList.remove("d-none");
+            }
+            else
+            {
+                document.getElementById("er8").classList.add("d-none");
+            }
+            if(!num.match(pt3))
+            {
+                document.getElementById("er9").classList.remove("d-none");
+            }
+            else
+            {
+                document.getElementById("er9").classList.add("d-none");
+            }
+        }
+       
+        
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arrow-functipon</title>
+</head>
+
+<body>
+    <h1>click the button to show the output of arrow function</h1>
+    <button id="fun1" onclick="f1()">click</button>
+    <h2 id="sh"></h2>
+    <h2 id="s"></h2>
+    <h3 id="clk"></h3>
+    <script>
+
+        const f1 = () => {
+            (function () {
+                alert("o/p of anonumous function")
+            })();
+            var v1 = parseInt(prompt("enter num1"))
+            var v2 = parseInt(prompt("enter num1"))
+            var sum = v1 + v2;
+            alert("the sum is:" + sum)
+        }
+
+        function show() {
+            document.getElementById("sh").innerHTML = "hello user";
+        }
+        function math(cb) {
+            cb();
+        }
+        math(show)
+
+        setTimeout(sur, 3000)
+        function sur() {
+            document.getElementById("s").innerHTML = "this is set time out example"
+        }
+        setInterval(clock, 1000)
+        function clock() {
+            var cl = new Date()
+            var hr = cl.getHours()
+            var min = cl.getMinutes()
+            var sec = cl.getSeconds()
+            document.getElementById("clk").innerHTML = hr + ":" + min + ":" + sec;
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>arrow-functipon</title>
+</head>
+
+<body>
+    <div>
+        <form action="">
+            <label for="q1">q1.what is docker</label>
+            <input type="text" id="ans1">
+            <label for="q2">what is container</label>
+            <input type="text" id="ans2">
+            <button onclick="getans()">submit</button>
+        </form>
+    </div>
+    <h3 id="clk"></h3>
+    <p id="show"></p>
+    <script>
+     var cl = new Date()
+         cl.setHours(0,0,30)
+        function getans()
+        {
+            var v1=document.getElementById("ans1").value;
+            var v2=document.getElementById("ans2").value;
+            document.getElementById("show").innerHTML=v1+"<br>"+v2;
+        }
+
+        function clock() {
+            cl.setMilliseconds(-1000)
+            var hr = cl.getHours()
+            var min = cl.getMinutes()
+            var sec = cl.getSeconds()
+            document.getElementById("clk").innerHTML = hr + ":" + min + ":" + sec;
+            if(hr==0 && min == 0 && sec==0)
+            {
+                alert("your exam is over")
+                cl.setHours(0,3,0)
+                getans();
+            }
+        }
+       setInterval(clock,1000)
+    </script>
+</body>
+
+</html>

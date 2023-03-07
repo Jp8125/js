@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>The square of the num is</h1>
+    <h1 id="sqr"></h1>
+    <button onclick="callback(val)">square</button>
+    <small>click the button to call the function</small>
+    <script>
+       function val(){
+        var v=parseInt(prompt("enter a value"))
+        return v;
+       }
+     function callback(val) {
+        var num=val();
+        document.getElementById("sqr").innerHTML=num*num;
+     }
+     
+    </script>
+</body>
+</html>

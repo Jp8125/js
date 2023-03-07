@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>vl</title>
+</head>
+<body>
+    <p>the first h1 shows the demo of var and can be access any where inside script </p>
+    <h1 id="demo"></h1>
+    <button onclick="exp()">let_demo</button>
+    <h2>value of let keyword is limited to function block so  let variable can be access only inside function block</h2>
+    <h1 id="d1"></h1>
+    <script>
+        var v1="global var"
+        document.getElementById("demo").innerHTML=v1;
+        function exp() {
+            let v1="let keyword demo"
+            document.getElementById("d1").innerHTML=v1;
+        }
+    </script>
+</body>
+</html>
