@@ -1,1 +1,2 @@
 https://stackblitz.com/edit/vitejs-vite-lwyjmc?file=index.html
+https://stackblitz.com/edit/vitejs-vite-bmc7dm?file=index.html
