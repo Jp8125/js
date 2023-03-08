@@ -10,19 +10,34 @@
 
 <body>
     <button onclick="get()">click</button>
+    <table id="shw">
+
+    </table>
     <script>
         var myHeaders = new Headers();
+       
         myHeaders.append("Authorization", "Bearer Bearer c3ef15f40b605c2da8ac4991cb3a283c63c5b56ef92aad25a10d2cdbc7140b42");
         function get(){
+            var data=[];
             var requestOptions = {
             method: 'GET',
             headers: myHeaders,
             redirect: 'follow'
         };
         fetch("https://gorest.co.in/public/v2/users", requestOptions)
-            .then(  response => response.text())
-            .then(result => console.log(result))
+            .then(  response => response.json())
+            .then((result) =>{
+               
+                data=result;
+                console.log(data)
+            for (let i = 0; i < data.length; i++) {
+
+               document.getElementById("shw").innerHTML+="<tr><td>"+data[i].name+"</td>"+"<td>"+data[i].email+"</td>"+"<td>"+data[i].gender+"</td>"+"<td>"+data[i].status+"</td></tr>";
+                
+            }
+            })
             .catch(error => console.log('error', error));
+            
         }
     </script>
 </body>
