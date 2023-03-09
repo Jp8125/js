@@ -7,6 +7,18 @@
     <title>function closure</title>
 </head>
 <body>
-    
+    <p id="d"></p>
+    <script>
+        function outer(){
+            var x="demo"
+            function inner(){
+                console.log(x)
+                document.getElementById("d").innerHTML="this is inner function<br> called  using  function closure"
+            }
+            return inner;
+        }
+        var closure=outer();
+        closure();
+    </script>
 </body>
 </html>

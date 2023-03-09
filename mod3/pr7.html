@@ -10,10 +10,12 @@
 </head>
 
 <body>
-    <table id="dTable" class="table table-hover"></table>
+    <table id="dTable" class="table table-hover">
+        <caption>output</caption>
+    </table>
     <div class="d-flex justify-content-center"> <button onclick="data()" class="btn btn-warning text-white">Show</button></div>
     <script>
-         document.getElementById("dTable").innerHTML="<thead><th>name</th><th>Price</th><th>location</th></thead>"
+         document.getElementById("dTable").innerHTML="<thead><th id='col'>name</th><th id='col'>Price</th><th id='col'>location</th></thead>"
         function data() {
             fetch("./product.json")
             .then((response) => response.json())
