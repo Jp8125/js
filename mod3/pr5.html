@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>practice5</title>
+</head>
+<body>
+    <p id="disp"></p>
+    <script>
+      const  obj2={
+            dis: function show() {
+                document.getElementById("disp").innerHTML=this.val1+" "+this.val2;
+                
+            }
+        }
+     const  obj1={
+            val1:"object1",
+            val2:"apply method example"
+        }
+        obj2.dis.apply(obj1)
+    </script>
+</body>
+</html>

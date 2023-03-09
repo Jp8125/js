@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>area</title>
+</head>
+<body>
+    <input type="number" name="area" id="rad">
+    <h3>the area of circle is:</h3>
+    <h3 id="s"></h3>
+    <button onclick="clk()">Area</button>
+    <script>
+        function clk()
+        {
+            var rs=document.getElementById("rad").value;
+        function area(r)
+        {
+            var a=3.14*r*r;
+            document.getElementById("s").innerHTML=a;
+        }
+        area(rs)
+       
+        }
+     
+    </script>
+</body>
+</html>

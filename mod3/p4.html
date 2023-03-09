@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>pr4</title>
+</head>
+<body>
+    <p id="data"></p>
+    <script>
+        function display() {
+            console.log(this)
+            document.getElementById("data").innerHTML="Name:\t"+emp.name+"<br>"+"Designation:\t"+emp.designation+"<br>"+"Address:\t"+emp.address
+        }
+        const emp ={
+            name:"emp",
+            designation:"trainee",
+            address:"nr nirma university,ahmedabad"
+        }
+        display.call(emp)
+    </script>
+</body>
+</html>

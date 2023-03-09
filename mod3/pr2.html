@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>construct</title>
+</head>
+<body>
+    <input type="number" name="rect" id="h" placeholder="enter height">
+    <input type="number" name="rect" id="w" placeholder="enter width">
+    <p>the area of rectangle is</p>
+    <p id="dis"></p>
+    <button onclick="a()">find</button>
+    <script>
+        function a(){
+            var h=document.getElementById("h").value;
+            var w=document.getElementById("w").value;
+            function cntr(ht,wh) {
+                this.hight=ht;
+                this.width=wh;
+            }
+           const obj=new cntr(h,w)
+            var area=obj.hight*obj.width;
+            document.getElementById("dis").innerHTML=area;
+
+        }
+    </script>
+</body>
+</html>
