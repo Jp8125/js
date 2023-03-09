@@ -20,12 +20,12 @@
       "location": "the snack isle"
 },
 {
-    "name": "self-raising flour",
+    "name": "self-raising-flour",
       "price": 1.50,
       "location": "Home backing"
 },
 {
-    "name": "Ground almonds",
+    "name": "Ground-almonds",
       "price": 3,
       "location": "Home backing"
 }]
