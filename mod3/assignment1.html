@@ -19,7 +19,9 @@
                Summery
             </button>
         </div>
-        <table id="tab"></table>
+        <table id="tab" class="table ">
+            <thead><th id="col">name</th><th id="col">Price</th></thead>
+        </table>
        
     </section>
     <script>
@@ -32,12 +34,12 @@
         function display(item=[]) {
             for (let i = 0; i < item.length; i++) {
                 document.getElementById("crd").innerHTML+=  
-                 "<div class='col-span-1 p-4'><p class='mx-auto'>" +
+                 `<div class="card" ><p class="text-success">` +
                     item[i].name +
-            "</p><p class='mx-auto'>" +
+            `</p><p class="text-primary">` +
             'Price : ' +
             '' +item[i].price +'</p>' +
-            "</p><button class='bg-blue-700 p-4 py-2 rounded-xl my-3 text-pink-300'onclick=add('" +item[i].name+ "'" +','+"'" +
+            "</p><button "+"class="+'"btn btn-primary"'+" onclick=add('" +item[i].name+ "'" +','+"'" +
             item[i].price+
             "')>" +
             'Add To Cart' +
@@ -48,10 +50,12 @@
         var sum=[];
         function add(n,p) {
             sum.push({"name":n,"price":p})
+            localStorage.setItem('data',JSON.stringify(sum))
         }
         function show() {
+            let dis=JSON.parse(localStorage.getItem('data'))
             for (let i = 0; i < sum.length; i++) {
-                document.getElementById("tab").innerHTML+="<tr><td>"+sum[i].name+"</td>"+"<td>"+sum[i].price+"</td></tr>"
+                document.getElementById("tab").innerHTML+="<tr><td>"+dis[i].name+"</td>"+"<td>"+dis[i].price+"</td></tr>"
                 
             }
             
