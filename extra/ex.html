@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex1</title>
+</head>
+<body>
+    <div id="data"></div>
+    <div id="op"></div>
+    <script>
+        const array=['item1','item2','item3']
+        const [var1,,var3]=array;
+        console.log(var1,var3)
+        // swaping with array
+        let v1=2;
+        let v2=3;
+       [v1,v2]=[v2,v1]
+       console.log(v1,v2)
+       //destructuring obj
+     const obj={
+        id:'200222',
+        name:'emp1',
+        accessories:{
+            e1:'pc'
+        }
+       }
+       const {id,name,accessories:{e1}}=obj
+       console.log(id,name,e1)
+       function f1({id,name,accessories:{e1}})
+       {
+        console.log(id,name,e1)
+       }
+       f1(obj)
+
+       var n1=2;
+       var n2=5;
+       var s=`the value of variable1 is ${n1} and variable2 is ${n2}`
+       console.log(s)
+       //dynamic template strings
+       var h1=6
+       var h2='h2'
+       var h3="string"
+       document.getElementById("data").innerHTML=`
+       <h1>the data in h1 variable is ${h1}</h1>
+       <h2>this is ${h2} tag</h2>
+       <h3>${h3}</h3>
+       `
+       var c1="new"
+       var c2="bike"
+       const santance=quote`our grandfather got ${c1} ${c2}`
+       document.getElementById("op").innerHTML=santance;
+       function quote(text,...vars)
+       {
+        console.log({text,vars})
+        const text1=text.map((data,i)=>{
+            return `${data} <strong >${vars[i]}</strong>`
+        })
+        return text1;
+       }
+    </script>
+</body>
+</html>
