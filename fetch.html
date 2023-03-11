@@ -6,38 +6,205 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <body>
-    <button onclick="get()">click</button>
-    <table id="shw">
+    <div class="card bg-whitw">
+        <form name="employee" class="form-group">
+            <label for="name">Name:&nbsp;</label>
+            <input type="text" id="name" class="form-control">
+            <label for="email">Email:</label><input type="email" id="email" class="form-control">
 
+            <div class="form-checkbox">
+                <label for="Gender">Gender:</label>
+                <input type="radio" class="form-check-input" id="female" name="Gender" value="female">
+                <label for="female">FEMALE</label>
+                <input type="radio" id="male" name="Gender" class="form-check-input" value="male">
+                <label for="male">MALE</label>
+            </div>
+
+            <div class="form-checkbox">
+                <label for="age">Status:</label>
+                <input type="radio" class="form-check-input" id="active" name="status" value="active">
+                <label for="female">active</label>
+                <input type="radio" id="inactive" name="status" class="form-check-input" value="inactive">
+                <label for="male">inactive</label>
+            </div>
+            <div class="d-flex justify-content-center"><input type="button" value="submit" onclick="post(),reset()"
+                    class="btn btn-primary"><button type="button" value="" id="k" onclick="update()"
+                    class="btn btn-primary">update</button></div>
+
+        </form>
+    </div>
+
+    <button onclick="get()" class="btn btn-danger px-4 mt-4">show</button>
+    <table id="shw" class="table">
+        <thead>
+            <th id="col">Name</th>
+            <th id="col">Email</th>
+            <th id="col">Gender</th>
+            <th id="col">Status</th>
+        </thead>
     </table>
     <script>
-        var myHeaders = new Headers();
-       
-        myHeaders.append("Authorization", "Bearer Bearer c3ef15f40b605c2da8ac4991cb3a283c63c5b56ef92aad25a10d2cdbc7140b42");
-        function get(){
-            var data=[];
-            var requestOptions = {
-            method: 'GET',
-            headers: myHeaders,
-            redirect: 'follow'
-        };
-        fetch("https://gorest.co.in/public/v2/users", requestOptions)
-            .then(  response => response.json())
-            .then((result) =>{
-               
-                data=result;
-                console.log(data)
+        function createtab(data = []) {
+
             for (let i = 0; i < data.length; i++) {
 
-               document.getElementById("shw").innerHTML+="<tr><td>"+data[i].name+"</td>"+"<td>"+data[i].email+"</td>"+"<td>"+data[i].gender+"</td>"+"<td>"+data[i].status+"</td></tr>";
-                
+                document.getElementById("shw").innerHTML += "<tr><td>" + data[i].name + "</td>" + "<td>" + data[i].email + "</td>" + "<td>" + data[i].gender + "</td>" + "<td>" + data[i].status + "</td>" + "<td>" + `<button onclick="d(${data[i].id})">del</button>` + "</td>" + "<td>" + `<button onclick="sh(${data[i].id})">update</button>` + "</td></tr>";
+
             }
-            })
-            .catch(error => console.log('error', error));
+        }
+        var myHeaders = new Headers();
+        myHeaders.append("Authorization", " Bearer c3ef15f40b605c2da8ac4991cb3a283c63c5b56ef92aad25a10d2cdbc7140b42");
+        function get() {
+            var requestOptions = {
+                method: 'GET',
+                headers: myHeaders,
+                redirect: 'follow'
+            }; fetch("https://gorest.co.in/public/v2/users", requestOptions)
+                .then(response => response.json())
+                .then((result) => {
+
+                    createtab(result)
+
+                })
+                .catch(error => console.log('error', error));
+
+        }
+        function post() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var gender
+            if (document.getElementById("male").checked == true) {
+                gender = document.getElementById("male").value;
+            }
+            else {
+                gender = document.getElementById("female").value;
+            }
+            var status
+            if (document.getElementById("active").checked == true) {
+                status = document.getElementById("active").value;
+            }
+            else {
+                status = document.getElementById("inactive").value;
+            }
+            var myHeaders = new Headers();
+            myHeaders.append("Authorization", "Bearer c3ef15f40b605c2da8ac4991cb3a283c63c5b56ef92aad25a10d2cdbc7140b42");
+            myHeaders.append("Content-Type", "application/json");
+
+            var raw = JSON.stringify({
+                "name": name,
+                "email": email,
+                "gender": gender,
+                "status": status
+            });
+
+            var requestOptions = {
+                method: 'POST',
+                headers: myHeaders,
+                body: raw,
+                redirect: 'follow'
+            };
+
+            fetch("https://gorest.co.in/public/v2/users", requestOptions)
+                .then(response => response.text())
+                .then(result => console.log(result))
+                .catch(error => console.log('error', error));
+        }
+        function d(id) {
+            var myHeaders = new Headers();
+            myHeaders.append("Authorization", "Bearer c3ef15f40b605c2da8ac4991cb3a283c63c5b56ef92aad25a10d2cdbc7140b42");
+
+            var requestOptions = {
+                method: 'DELETE',
+                headers: myHeaders,
+                redirect: 'follow'
+            };
+
+            fetch(`https://gorest.co.in/public/v2/users/${id}`, requestOptions)
+                .then(response => response.text())
+                .then(result => console.log(result))
+                .catch(error => console.log('error', error));
+        }
+
+        function update() {
+            var name = document.getElementById("name").value;
+            var email = document.getElementById("email").value;
+            var gender
+            if (document.getElementById("male").checked == true) {
+                gender = document.getElementById("male").value;
+            }
+            else {
+                gender = document.getElementById("female").value;
+            }
+            var status
+            if (document.getElementById("active").checked == true) {
+                status = document.getElementById("active").value;
+            }
+            else {
+                status = document.getElementById("inactive").value;
+            }
+           var id = document.getElementById("k").value;
             
+            var myHeaders = new Headers();
+            myHeaders.append("Authorization", "Bearer c3ef15f40b605c2da8ac4991cb3a283c63c5b56ef92aad25a10d2cdbc7140b42");
+            myHeaders.append("Cookie", "_gorest_session=L4Xk8KHldPpz754fT5fAxI7ha%2BEBCrldVmposzgRj9jRHnPSk4UaBhRSmRwRekDma0sNBUdb1sopeVV5ed8nprxY12n7T%2FOryHpQZsGCrAc52TQpJMPBDDEUWCRjxVHJfb%2BbcyorajXcPH%2B3i250dyVhXcHR238jN5QujMjFNFudm459B4bku26pKu0aYyfIJcGWGol6ibXTUcy9AlJevTnKH%2FUZX7d0PIncOHwHWdc7w5%2FeZJ1Hzz2pO6JKiKurN1%2FFq2LOB2N4gojwBx77GIj0g6ftL40%3D--vjHGkMHVwZqZVSDK--s7%2F7Umiyk8Ns4UkEW12Q2w%3D%3D");
+
+            var formdata = new FormData();
+            formdata.append("name", name);
+            formdata.append("email", email);
+            formdata.append("gender", gender);
+            formdata.append("status", status);
+
+            var requestOptions = {
+                method: 'PATCH',
+                headers: myHeaders,
+                body: formdata,
+                redirect: 'follow'
+            };
+
+            fetch(`https://gorest.co.in/public/v2/users/${id}`, requestOptions)
+                .then(response => response.text())
+                .then(result => console.log(result))
+                .catch(error => console.log('error', error));
+
+        }
+        function sh(id) {
+            var requestOptions = {
+                method: 'GET',
+                headers: myHeaders,
+                redirect: 'follow'
+            }; fetch(`https://gorest.co.in/public/v2/users/${id}`, requestOptions)
+                .then(response => response.json())
+                .then((result) => {
+                    document.getElementById("name").value=result.name;
+                    document.getElementById("email").value=result.email;
+                    if(result.gender=="male")
+                    {
+                        document.getElementById("male").checked =true
+                    }
+                    else
+                    {
+                        document.getElementById("femail").checked =true
+                    }
+                    if(result.status=="active")
+                    {
+                        document.getElementById("active").checked =true
+                    }
+                    else
+                    {
+                        document.getElementById("inactive").checked =true
+                    }
+                    document.getElementById("k").value=id;
+
+                }
+                
+                )
+                .catch(error => console.log('error', error));
+                
         }
     </script>
 </body>
