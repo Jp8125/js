@@ -1,0 +1,5 @@
+var d= new Date("Septmber 28, 2001")
+var cd=new Date()
+let sec=cd.valueOf()-d.valueOf()
+let y=((sec/86400000)/365.5)
+console.log(y)
