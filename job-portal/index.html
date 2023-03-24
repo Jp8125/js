@@ -8,8 +8,35 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD" crossorigin="anonymous">
   </head>
   <body>
-    <div id="app" class="container d-flex justify-content-between"></div>
-    <button class="btn btn-success text-white" id="create">create vacancy</button>
+ 
+    <div class="container d-flex justify-content-center p-2">
+      <div class="p-5 border">
+        <div class="row">
+          <label for="role" class="col">Role:</label>
+          <input type="text" class="col" id="role">
+        </div>
+        <div class="row my-3">
+          <label for="date" class="col">Date:</label>
+          <input type="date" id="date" class="col">
+        </div>
+        <div class="row my-3" >
+          <label for="dept" class="col">Department:</label>
+          <input type="text" id="dept" class="col">
+        </div>
+        <div class="row">
+          <label for="vacancyNo" class="col">No of Vacancy</label>
+          <input type="number" id="vacNo" class="col">
+        </div>
+        <div class="row mt-3">
+          <button class="btn btn-success text-white" id="create">create vacancy</button>
+        </div>
+      </div>
+    </div>
+    <h1 class="display-6 text-center">Created vacancy</h1>
+    <div id="app" class="container border  p-5 d-flex justify-content-between flex-wrap"></div>
+    <div class="container mt-4 border border-warning" id="applicant">
+      <h1 class="display-5 text-center">Add Applicant</h1>
+    </div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>

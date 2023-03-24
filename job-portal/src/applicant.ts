@@ -6,24 +6,28 @@ class applicant implements person{
     address: string;
     dob: Date;
     gender: string;
+    result:string
     constructor(id:number,name:string,address:string,dob:Date,gender:string){
         this.name=name;
         this.address=address;
         this.dob=dob;
         this.gender=gender;
         this.id=id;
+        this.result="fail"
     }
     accept():void{
-        alert("resopnse sent")
+        alert("response sent")
     }
     reject():void{
-        alert("resopnse sent")
+        alert("response sent")
     }
 }
-let adetails:applicant[]=[];
+let adetails:applicant[]=[
+    new applicant(1,"shivam","28 Ala Kopiko Street, Honolulu,hi, 96818  United States", new Date("12,8,2001"),"male"),
+    new applicant(2,"mahesh","28 Ala Kopiko Street, Honolulu,hi, 96818  United States", new Date("12,1,2003"),"male")
+];
 function apply():void{
     alert("applied success fully")
-    let aobj=new applicant(1,"rahul","address",new Date("12,8,2001"),"male");
-    adetails.push(aobj);
 }
+
 export {applicant,adetails,apply}
